@@ -1,7 +1,7 @@
 
 ###  GET DUMMY SUPPLIERS
 
-GET  http://localhost:5000/suppliers/ HTTP/1.1
+GET  https://decovid-app.herokuapp.com/suppliers/ HTTP/1.1
 content-type: application/json
 
 
@@ -9,14 +9,14 @@ content-type: application/json
 
 ###  GET ALL SUPPLIERS
 
-GET  http://localhost:5000/suppliers/getAllSuppliers HTTP/1.1
+GET  https://decovid-app.herokuapp.com/suppliers/getAllSuppliers HTTP/1.1
 content-type: application/json
 
 
 
 ### ADD A SUPPLIER
 
-POST  http://localhost:5000/suppliers/addSupplier HTTP/1.1
+POST  https://decovid-app.herokuapp.com/suppliers/addSupplier HTTP/1.1
 content-type: application/json
 
 {
