@@ -11,7 +11,7 @@ const mongoInstantiate = require("./mongo/mongo-client");
 var app = express();
 
 /*** Instantiate Mongo Server */
-await mongoInstantiate();
+mongoInstantiate();
 /******************************************************/
 
 
