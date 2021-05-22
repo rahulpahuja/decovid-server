@@ -1,76 +1,50 @@
-const express = require('express')
+require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
 const path = require('path')
-const PORT = process.env.PORT || 5000
 var app = express();
+
+/*** IMPORT ROUTES */
+const supplierRoute = require("./routes/suppliers");
+/******************************************************/
+
+/***** CONFIGURATION *****/
+const PORT = process.env.PORT || 5000
 
 app.use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.send('Hello World'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+/******************************************************/
 
 
 
 
-
+/*** APIS and ROUTING */
+// API Extras
 app.get('/hello',function(req,res){
   res.send('Hello World')
 });
 
-app.get('/suppliers',function(req,res){
- var object = {
-  "isActive": "false",
-  "name": "Rahul",
-  "phoneNumber": "8888888888",
-  "supplies": "{BLOOD,OXYGEN}",
-  "id": "1",
-  "state": "Madhya Pradesh",
-  "city": "Indore",
-  "address": "Raja Ram Nagar",
-  "organization": "Individual",
-  "isReported": "false",
-  "reportedCount": "0",
-  "image": "www.google.com"
-}
-var object1 = {
-  "isActive": "false",
-  "name": "Raj",
-  "phoneNumber": "8888888888",
-  "supplies": "{BLOOD,OXYGEN}",
-  "id": "2",
-  "state": "Madhya Pradesh",
-  "city": "Indore",
-  "address": "Raja Ram Nagar",
-  "organization": "Individual",
-  "isReported": "false",
-  "reportedCount": "0",
-  "image": "www.google.com"
-}
-var object2 = {
-  "isActive": "false",
-  "name": "Rock",
-  "phoneNumber": "8888888880",
-  "supplies": "{BLOOD,OXYGEN}",
-  "id": "3",
-  "state": "Madhya Pradesh",
-  "city": "Indore",
-  "address": "Raja Ram Nagar",
-  "organization": "Individual",
-  "isReported": "false",
-  "reportedCount": "0",
-  "image": "www.google.com"
-}
-
-  var myList = new Array();
-  myList.push(object1);
-  myList.push(object);
-  myList.push(object2);
-  myList.push(object);
-  myList.push(object);
-  myList.push(object1);
-  myList.push(object);
-  myList.push(object2);
-  myList.push(object2);
-  myList.push(object2);
-  res.send(myList)
+//HOME
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
 });
+
+app.use("/suppliers", supplierRoute);
+/******************************************************/
+
+// START SERVER! (Comment this in case deploying on Lamda or GCP Functions)
+app.listen(PORT, () => {
+  console.log("Server listening on: " + PORT);
+});
+
+module.exports = {
+  app,
+};
