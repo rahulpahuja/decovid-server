@@ -1,0 +1,37 @@
+
+###  GET DUMMY SUPPLIERS
+
+GET  http://localhost:5000/suppliers/ HTTP/1.1
+content-type: application/json
+
+
+
+
+###  GET ALL SUPPLIERS
+
+GET  http://localhost:5000/suppliers/getAllSuppliers HTTP/1.1
+content-type: application/json
+
+
+
+### ADD A SUPPLIER
+
+POST  http://localhost:5000/suppliers/addSupplier HTTP/1.1
+content-type: application/json
+
+{
+    "email": "gourav@decovid.ai",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "name": "Gourav Singh Jat",
+    "isActive": true,
+    "isReported":true,
+    "reportedCount": "10",
+    "image" : "https://avatars.githubusercontent.com/u/10242693?v=4",
+    "phoneNumber" : "1234567890",
+    "state" : "Madhya Pradesh",
+    "city" : "Indore",
+    "address" :"Crystal IT Park, Khandwa Road",
+    "organisation" : "Satyarthi Child Empowerment NGO",
+    "supplies" :[ "FOOD", "OXYGEN"]
+ }
+
