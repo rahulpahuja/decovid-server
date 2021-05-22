@@ -97,7 +97,7 @@ supplierRouter.post("/addSupplier", async (req, res) => {
     }
 
     //create new Supplier
-    let supplier = new Supplier({ email, password });
+    let supplier = new Supplier(req.body);
     await supplier.save();
 
     let createdSupplier = await Supplier.findOne({ email }).exec();

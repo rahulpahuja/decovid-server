@@ -20,7 +20,7 @@ POST  http://localhost:5000/suppliers/addSupplier HTTP/1.1
 content-type: application/json
 
 {
-    "email": "gourav@decovid.ai",
+    "email": "gaaourav@decovid.ai",
     "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
     "name": "Gourav Singh Jat",
     "isActive": true,
@@ -32,6 +32,6 @@ content-type: application/json
     "city" : "Indore",
     "address" :"Crystal IT Park, Khandwa Road",
     "organisation" : "Satyarthi Child Empowerment NGO",
-    "supplies" :[ "FOOD", "OXYGEN"]
+    "supplies" : [ "FOOD", "OXYGEN"]
  }
 
