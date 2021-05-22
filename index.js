@@ -13,7 +13,7 @@ express()
 var app = express();
 
 
-  app.post('/hello',function(req,res){
+  app.get('/hello',function(req,res){
   res.send('Hello World')
 });
 
