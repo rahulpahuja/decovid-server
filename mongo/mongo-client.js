@@ -1,12 +1,11 @@
 const mongoose = require("mongoose");
 var result = require('dotenv').config({ silent: true }); 
-const envs = result.parsed;
 
-console.log(envs)
-const DB_URI = envs.DB_URI;
-const DB_USER = envs.DB_USER;
-const DB_PASS = envs.DB_PASSWORD;
-const DB_NAME = envs.DB_NAME;
+console.log(process.env)
+const DB_URI = process.env.DB_URI;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASSWORD;
+const DB_NAME = process.env.DB_NAME;
 
 const MONGOURI = `mongodb+srv://${DB_USER}:${encodeURIComponent(
   DB_PASS
