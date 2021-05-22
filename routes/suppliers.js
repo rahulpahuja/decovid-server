@@ -66,16 +66,23 @@ supplierRouter.get("/", async (req, res) => {
 
 /** Get all Suppliers */
 supplierRouter.get("/getAllSuppliers", async (req, res) => {
-  let suppliers = await Supplier.find({}).exec();
-  console.log(suppliers);
-  let responseObject = {
-    status: "success",
-    title: "Get all suppliers.",
-    msg: "Suppliers found.",
-    data: { suppliers: suppliers },
-  };
+  try{
+    let suppliers = await Supplier.find().exec();
+    console.log(suppliers);
+    let responseObject = {
+      status: "success",
+      title: "Get all suppliers.",
+      msg: "Suppliers found.",
+      data: { suppliers: suppliers },
+    };
+  
+    return res.status(200).json(responseObject);
+  } catch(err){
+    res
+    .status(400)
+    .json({ status: "error", title: "GetSupplierFailed", msg: error });
+  }
 
-  return res.status(200).json(responseObject);
 });
 
 
@@ -97,7 +104,7 @@ supplierRouter.post("/addSupplier", async (req, res) => {
     }
 
     //create new Supplier
-    let supplier = new Supplier({ email, password });
+    let supplier = new Supplier(req.body);
     await supplier.save();
 
     let createdSupplier = await Supplier.findOne({ email }).exec();

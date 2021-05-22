@@ -47,12 +47,12 @@ const SupplierSchema = mongoose.Schema({
     type: String,
   },
 
-  supplies: {
-    type: [String], // enum: ['BLOOD','FOOD', 'OXYGEN', 'MEDICALDEVICES'],
-
-    default: "FOOD",
-  },
+  supplies: [
+    {
+      type: [String], default: [] // enum: ['BLOOD','FOOD', 'OXYGEN', 'MEDICALDEVICES'],
+    }
+  ]
 });
 
 // export model supplier with SupplierSchema
-module.exports = mongoose.model("SupplierSchema", SupplierSchema);
+module.exports = mongoose.model("Supplier", SupplierSchema);

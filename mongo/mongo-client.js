@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
+var result = require('dotenv').config({ silent: true }); 
+const result = dotenv.config();
+const envs = result.parsed;
 
-const DB_URI = process.env.DB_URI;
-const DB_USER = process.env.DB_USER;
-const DB_PASS = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME;
+console.log(envs)
+const DB_URI = envs.DB_URI;
+const DB_USER = envs.DB_USER;
+const DB_PASS = envs.DB_PASSWORD;
+const DB_NAME = envs.DB_NAME;
 
 const MONGOURI = `mongodb+srv://${DB_USER}:${encodeURIComponent(
   DB_PASS
@@ -18,7 +22,7 @@ const mongoInstantiate = async () => {
     });
     console.log("Connected to DB.");
   } catch (e) {
-    console.log(e);
+    console.log("MONGO ERROR" : e);
     throw e;
   }
 };

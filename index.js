@@ -1,4 +1,4 @@
-require('dotenv').config({path: __dirname + '/.env'});
+// require('dotenv').config({path: __dirname + '/.env'});
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -11,7 +11,7 @@ const mongoInstantiate = require("./mongo/mongo-client");
 var app = express();
 
 /*** Instantiate Mongo Server */
-mongoInstantiate();
+await mongoInstantiate();
 /******************************************************/
 
 
