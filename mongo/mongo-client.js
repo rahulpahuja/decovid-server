@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 var result = require('dotenv').config({ silent: true }); 
-const result = dotenv.config();
 const envs = result.parsed;
 
 console.log(envs)
@@ -22,7 +21,7 @@ const mongoInstantiate = async () => {
     });
     console.log("Connected to DB.");
   } catch (e) {
-    console.log("MONGO ERROR" : e);
+    console.log("MONGO ERROR" + e);
     throw e;
   }
 };
