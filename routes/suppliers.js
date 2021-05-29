@@ -102,8 +102,9 @@ supplierRouter.get("/agreement",async(req,res)=>{
       title: "Cannot Find Supplier Agreement",
       msg: "Supplier agreement Does not exist",
     });
-    return;
+    
   }
+  return;
 });
 
 /** Add a Supplier*/
