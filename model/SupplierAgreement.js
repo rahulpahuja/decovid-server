@@ -19,4 +19,4 @@ const SupplierAgreementSchema = mongoose.Schema({
 });
 
 // export model supplier with SupplierSchema
-module.exports = mongoose.model("Supplier", SupplierSchema);
+module.exports = mongoose.model("SupplierAgreement", SupplierAgreementSchema);
