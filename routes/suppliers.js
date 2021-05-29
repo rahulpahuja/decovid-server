@@ -3,6 +3,7 @@ const express = require("express");
 const supplierRouter = express.Router({ mergeParams: true });
 
 const Supplier = require("../model/Supplier");
+const SupplierAgreement = require("../model/SupplierAgreement");
 
 
 /** DUMMY GET ALL Suppliers **/
@@ -75,7 +76,6 @@ supplierRouter.get("/getAllSuppliers", async (req, res) => {
       msg: "Suppliers found.",
       data: { suppliers: suppliers },
     };
-  
     return res.status(200).json(responseObject);
   } catch(err){
     res
@@ -85,6 +85,26 @@ supplierRouter.get("/getAllSuppliers", async (req, res) => {
 
 });
 
+supplierRouter.get("/agreement",async(req,res)=>{
+  console.log(req.body);
+  try{
+    let supplierAgreement = await SupplierAgreement.find().exec();
+    res.status(200).json({
+      status: "success",
+      title: "Supplier Agreement",
+      msg: "Supplier Agreement Fetched Successfully",
+      data: { supplierAgreement: supplierAgreement },
+    });
+
+  }catch(error){
+    res.status(400).json({
+      status: "error",
+      title: "Cannot Find Supplier Agreement",
+      msg: "Supplier agreement Does not exist",
+    });
+    return;
+  }
+});
 
 /** Add a Supplier*/
 supplierRouter.post("/addSupplier", async (req, res) => {
