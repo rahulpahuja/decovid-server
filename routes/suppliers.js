@@ -89,22 +89,21 @@ supplierRouter.get("/agreement",async(req,res)=>{
   console.log(req.body);
   try{
     let supplierAgreement = await SupplierAgreement.find().exec();
-    res.status(200).json({
+    let responseObject={
       status: "success",
       title: "Supplier Agreement",
       msg: "Supplier Agreement Fetched Successfully",
       data: { supplierAgreement: supplierAgreement },
-    });
+    }
+    return res.status(200).json(responseObject);
 
   }catch(error){
-    res.status(400).json({
+    return res.status(400).json({
       status: "error",
       title: "Cannot Find Supplier Agreement",
       msg: "Supplier agreement Does not exist",
     });
-    
-  }
-  return;
+  };
 });
 
 /** Add a Supplier*/
