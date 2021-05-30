@@ -88,12 +88,12 @@ supplierRouter.get("/getAllSuppliers", async (req, res) => {
 supplierRouter.get("/agreement",async(req,res)=>{
   console.log(req.body);
   try{
-    let supplierAgreement = await SupplierAgreement.find({"isActive":true}).exec();
+    let supplierAgreement1 = await SupplierAgreement.find({"isActive":true}).exec();
     let responseObject={
       status: "success",
       title: "Supplier Agreement",
       msg: "Supplier Agreement Fetched Successfully",
-      data: { supplierAgreement: supplierAgreement },
+      data: { supplierAgreement: supplierAgreement1 },
     }
     return res.status(200).json(responseObject);
 
