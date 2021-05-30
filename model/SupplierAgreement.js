@@ -15,8 +15,12 @@ const SupplierAgreementSchema = mongoose.Schema({
   },
   isActive: {
     type: Boolean,
-  }
+  },
 });
 
 // export model supplier with SupplierSchema
-module.exports = mongoose.model("SupplierAgreement", SupplierAgreementSchema);
+module.exports = mongoose.model(
+  "SupplierAgreement",
+  SupplierAgreementSchema,
+  "supplierAgreement"
+);
