@@ -18,7 +18,7 @@ mongoInstantiate();
 /*** IMPORT ROUTES */
 const supplierRoute = require("./routes/suppliers");
 
-const voulenteerRoute = require("./routes/voulenteers");
+const voulenteerRoute = require("./routes/voulenteer");
 /******************************************************/
 
 /***** CONFIGURATION *****/
