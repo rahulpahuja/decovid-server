@@ -1,10 +1,10 @@
 const express = require("express");
 
-const voulenteerRouter = express.Router({ mergeParams: true });
+const vR = express.Router({ mergeParams: true });
 
 const Voulenteer = require("../model/Voulenteer");
 
-voulenteerRouter.post("/addVoulenteer", async (req, res) => {
+vR.post("/addV", async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body;
     //check for existing supplier
@@ -17,7 +17,7 @@ voulenteerRouter.post("/addVoulenteer", async (req, res) => {
           msg: "Voulenteer already exists.",
         });
         return;
-      } 
+      }
       //create new Supplier
       let vr = new Voulenteer(req.body);
       await vr.save();
