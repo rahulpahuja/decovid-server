@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Requesters = require('../model/requester');
+const Requesters = require('../model/Requester');
 //const supplierRouter = express.Router({ mergeParams: true });
 
 const GET_ALL_REQUESTERS='Get all Requesters Called';
