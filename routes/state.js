@@ -62,10 +62,10 @@ router.post("/",async(req,res)=>{
 
 
 //Patch Request
-router.patch('/:state_id',async(req,res)=>{
+router.patch('/:id',async(req,res)=>{
     print(UPDATE_REQUESTER);
     try{
-        const arequester = await States.findById(req.params.state_id);
+        const arequester = await States.findById(req.params.id);
         arequester.name = req.body.name;
         const a1 = await arequester.save();
         res.json(a1);
@@ -79,7 +79,7 @@ router.patch('/:state_id',async(req,res)=>{
 router.delete('/:state_id',async(req,res)=>{
     print(DELETE_REQUESTER_BY_ID);
     try{
-        const arequester = await States.findById(req.params.state_id);
+        const arequester = await States.findOne(req.params.state_id);
         const serverResponse = await States.remove(arequester);
         res.json(serverResponse);
     }catch(error){
