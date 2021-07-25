@@ -19,6 +19,9 @@ mongoInstantiate();
 const supplierRoute = require("./routes/suppliers");
 
 const voulenteerRoute = require("./routes/voulenteer");
+
+const requesterRoute = require("./routes/requester");
+
 /******************************************************/
 
 /***** CONFIGURATION *****/
@@ -49,6 +52,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/suppliers", supplierRoute);
+app.use("/voulenteers", voulenteerRoute);
+app.use("./requester",requesterRoute);
+
 /******************************************************/
 
 // START SERVER! (Comment this in case deploying on Lamda or GCP Functions)
