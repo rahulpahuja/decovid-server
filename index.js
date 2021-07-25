@@ -22,6 +22,9 @@ const voulenteerRoute = require("./routes/voulenteer");
 
 const requesterRoute = require("./routes/requester");
 
+
+const stateRoute = require("./routes/state");
+
 /******************************************************/
 
 /***** CONFIGURATION *****/
@@ -55,6 +58,7 @@ app.use("/suppliers", supplierRoute);
 app.use("/voulenteers", voulenteerRoute);
 app.use("/requesters",requesterRoute);
 
+app.use("/states",stateRoute);
 /******************************************************/
 
 // START SERVER! (Comment this in case deploying on Lamda or GCP Functions)
