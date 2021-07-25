@@ -22,8 +22,9 @@ const voulenteerRoute = require("./routes/voulenteer");
 
 const requesterRoute = require("./routes/requester");
 
-
 const stateRoute = require("./routes/state");
+
+const cityRoute = require("./routes/city");
 
 /******************************************************/
 
@@ -57,6 +58,8 @@ app.get("/", (req, res) => {
 app.use("/suppliers", supplierRoute);
 app.use("/voulenteers", voulenteerRoute);
 app.use("/requesters",requesterRoute);
+
+app.use("/cities",cityRoute);
 
 app.use("/states",stateRoute);
 /******************************************************/
