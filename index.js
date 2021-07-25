@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
 
 app.use("/suppliers", supplierRoute);
 app.use("/voulenteers", voulenteerRoute);
-app.use("./requester",requesterRoute);
+app.use("/requesters",requesterRoute);
 
 /******************************************************/
 
