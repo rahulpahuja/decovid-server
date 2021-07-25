@@ -47,13 +47,18 @@ router.post("/",async(req,res)=>{
     print(CREATE_REQUESTER);
     try{
             const requester = new Requesters({
-                name: req.body.name,
-                email:req.body.email
+                firstName: req.body.firstName,
+                lastName:req.body.lastName,
+                city:req.body.city,
+                state:req.body.state,
+                phoneNumber:req.body.phoneNumber,
+                address:req.body.address,
             });
             const a1 = await requester.save();
             res.json(a1);
             
     }catch(err){
+        res.status(404);
         res.send("Error: "+err);
     }
 });
@@ -68,6 +73,7 @@ router.patch('/:id',async(req,res)=>{
         const a1 = await arequester.save();
         res.json(a1);
     }catch(err){
+        res.status(404);
         res.send("Error:"+err);
     }
 });
@@ -80,6 +86,7 @@ router.delete('/:id',async(req,res)=>{
         const serverResponse = await Requesters.remove(arequester);
         res.json(serverResponse);
     }catch(error){
+        res.status(404);
         res.send("Error:"+error);
     }
 });
