@@ -47,8 +47,8 @@ router.post("/",async(req,res)=>{
     print(CREATE_REQUESTER);
     try{
             const requester = new States({
-                state_id: req.body.stateId,
-                state_name:req.body.stateName,
+                state_id: req.body.state_id,
+                state_name:req.body.state_name,
                 country:req.body.country,
             });
             const a1 = await requester.save();
