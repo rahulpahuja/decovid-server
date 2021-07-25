@@ -28,10 +28,10 @@ router.get('/',async(req,res)=>{
 
 
 //Find by Id
-router.get('/:id',async(req,res)=>{
+router.get('/:state_id',async(req,res)=>{
     console.log('from States');
     try{
-            const requester = await States.findById(req.params.id);
+            const requester = await States.findById(req.params.state_id);
             if(requester==null){
                 res.json("Requester Does not Exist")
             }
@@ -62,10 +62,10 @@ router.post("/",async(req,res)=>{
 
 
 //Patch Request
-router.patch('/:id',async(req,res)=>{
+router.patch('/:state_id',async(req,res)=>{
     print(UPDATE_REQUESTER);
     try{
-        const arequester = await States.findById(req.params.id);
+        const arequester = await States.findById(req.params.state_id);
         arequester.name = req.body.name;
         const a1 = await arequester.save();
         res.json(a1);
@@ -76,10 +76,10 @@ router.patch('/:id',async(req,res)=>{
 });
 
 //Delete States by id
-router.delete('/:id',async(req,res)=>{
+router.delete('/:state_id',async(req,res)=>{
     print(DELETE_REQUESTER_BY_ID);
     try{
-        const arequester = await States.findById(req.params.id);
+        const arequester = await States.findById(req.params.state_id);
         const serverResponse = await States.remove(arequester);
         res.json(serverResponse);
     }catch(error){
