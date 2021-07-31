@@ -17,7 +17,7 @@ hospitalRouter.get("/",async(req,res)=>{
 } catch (error) {
   res
     .status(400)
-    .json({ status: "error", title: "Create Hospital Failed, Try Again", msg: "Error" });
+    .json({ status: "error", title: "No Hospital Exist, Try Again Later", msg: "Error" });
 }
 });
 hospitalRouter.post("/addHospital", async (req, res) => {
