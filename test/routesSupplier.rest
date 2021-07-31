@@ -5,6 +5,18 @@ GET  https://decovid-app.herokuapp.com/suppliers/ HTTP/1.1
 content-type: application/json
 
 
+### ADD POST  https://decovid-app.herokuapp.com/requesters HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Gourav",
+    "lastName": "Singh Jat"
+    "phoneNumber" : "1234567890",
+    "state" : "Madhya Pradesh",
+    "city" : "Indore",
+    "address" :"Crystal IT Park, Khandwa Road",
+ }
+
 
 
 ###  GET ALL SUPPLIERS

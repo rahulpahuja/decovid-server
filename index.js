@@ -1,4 +1,4 @@
-// require('dotenv').config({path: __dirname + '/.env'});
+require('dotenv').config({path: __dirname + '/.env'});
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -26,6 +26,13 @@ const supplierRoute = require("./routes/suppliers");
 
 const voulenteerRoute = require("./routes/voulenteer");
 const hospitalRoute = require("./routes/hospital");
+
+
+const requesterRoute = require("./routes/requester");
+
+const stateRoute = require("./routes/state");
+
+const cityRoute = require("./routes/City");
 /******************************************************/
 
 /***** CONFIGURATION *****/
@@ -58,6 +65,12 @@ app.get("/", (req, res) => {
 app.use("/suppliers", supplierRoute);
 app.use("/voulenteers", voulenteerRoute);
 app.use("/hospital", hospitalRoute);
+
+app.use("/requesters",requesterRoute);
+
+app.use("/cities",cityRoute);
+
+app.use("/states",stateRoute);
 /******************************************************/
 
 // START SERVER! (Comment this in case deploying on Lamda or GCP Functions)
