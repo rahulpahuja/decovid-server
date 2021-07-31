@@ -110,7 +110,6 @@ supplierRouter.get("/agreement",async(req,res)=>{
 supplierRouter.post("/addSupplier", async (req, res) => {
   console.log(req.body);
   const { email, password } = req.body;
-
   //check for existing supplier
   try {
     let existingSupplier = await Supplier.findOne({ email }).exec();
@@ -122,13 +121,10 @@ supplierRouter.post("/addSupplier", async (req, res) => {
       });
       return;
     }
-
     //create new Supplier
     let supplier = new Supplier(req.body);
     await supplier.save();
-
     let createdSupplier = await Supplier.findOne({ email }).exec();
-
     res.status(200).json({
       status: "success",
       title: "CreateSupplier",
@@ -141,6 +137,13 @@ supplierRouter.post("/addSupplier", async (req, res) => {
       .json({ status: "error", title: "CreateSuplierFailed", msg: error });
   }
 });
+
+supplierRouter.delete("/:email",async(req,res)=>{
+  const { email } = req.params;
+  await Supplier.delete({email})
+});
+
+
 
 /** Get a supplier. */
 supplierRouter.get("/:email", async (req, res) => {

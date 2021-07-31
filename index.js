@@ -5,6 +5,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require('path');
 
+
+
+
+
+
+
 const mongoInstantiate = require("./mongo/mongo-client");
 
 
@@ -19,6 +25,7 @@ mongoInstantiate();
 const supplierRoute = require("./routes/suppliers");
 
 const voulenteerRoute = require("./routes/voulenteer");
+const hospitalRoute = require("./routes/hospital");
 /******************************************************/
 
 /***** CONFIGURATION *****/
@@ -49,6 +56,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/suppliers", supplierRoute);
+app.use("/voulenteers", voulenteerRoute);
+app.use("/hospital", hospitalRoute);
 /******************************************************/
 
 // START SERVER! (Comment this in case deploying on Lamda or GCP Functions)
