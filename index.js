@@ -47,7 +47,6 @@ app.use("/requesters",requesterRoute);
 app.use("/cities",cityRoute);
 app.use("/states",stateRoute);
 /******************************************************/
-
 // START SERVER! (Comment this in case deploying on Lamda or GCP Functions)
 app.listen(PORT, () => {
   console.log("Server listening on: " + PORT);
