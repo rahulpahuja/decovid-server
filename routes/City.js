@@ -1,20 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const Citys = require('../model/City');
-//const supplierRouter = express.Router({ mergeParams: true });
-
 const GET_ALL_Citys='Get all Citys Called';
-
 const DELETE_City_BY_ID='Delete City by Id Called';
-
 const CREATE_City='Create City Called';
-
 const UPDATE_City='Update City Called';
-
+//Printer Function for Printing Data
 function print(data){
     console.log(data);
 }
-
+//GET ALL CITIES
 router.get('/',async(req,res)=>{
     print(GET_ALL_Citys);
     try{
@@ -25,9 +20,7 @@ router.get('/',async(req,res)=>{
         res.send("Error: "+err);
     }
 });
-
-
-//Find by Id
+//Get by City By Id
 router.get('/:id',async(req,res)=>{
     console.log('from Citys');
     try{
@@ -41,8 +34,7 @@ router.get('/:id',async(req,res)=>{
         res.send("Error: "+err);
     }
 });
-
-
+//POST: CREATE CITY
 router.post("/",async(req,res)=>{
     print(CREATE_City);
     try{
@@ -59,9 +51,7 @@ router.post("/",async(req,res)=>{
         res.send("Error: "+err);
     }
 });
-
-
-//Patch Request
+//Patch: Request
 router.patch('/:id',async(req,res)=>{
     print(UPDATE_City);
     try{
@@ -74,8 +64,7 @@ router.patch('/:id',async(req,res)=>{
         res.send("Error:"+err);
     }
 });
-
-//Delete Citys by id
+//Delete: City by id
 router.delete('/:id',async(req,res)=>{
     print(DELETE_City_BY_ID);
     try{
@@ -87,7 +76,4 @@ router.delete('/:id',async(req,res)=>{
         res.send("Error:"+error);
     }
 });
-
-
-
 module.exports = router;
