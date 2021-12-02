@@ -1,3 +1,5 @@
+//BASE PATH: https://decovid-app.herokuapp.com/
+
 /*********************************************/
 //Model
 //GET
