@@ -4,17 +4,47 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require('path');
+const swaggerJSDocs = require('swagger-jsdoc');
+const swaggerUI = require('swagger-ui-express');
+//For Swagger
+//https://www.youtube.com/watch?v=RMzwNIz_Iac
+const swaggerOptions = {
+  definition:{
+    openapi:'3.0.0',
+    info: {
+      title:'Decovid Management API',
+      version:'1.0.0',
+      description:'APIS',
+      contact:{
+        name:'Decvoid Contact',
+        url:'www.google.com',
+        email:'decovidindia@gmail.com'
+      },
+      servers:["http://localhost:9001"]
+    }
+  },
+  apis:["index.js"]
+}
 
-
-
-
-
+/**
+ * @swagger
+ * definitions:
+ *  Employee:
+ */
 
 
 const mongoInstantiate = require("./mongo/mongo-client");
 
 
 var app = express();
+
+
+const swaggerDocs = swaggerJSDocs(swaggerOptions);
+//End point for swagger ui
+app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs));
+
+
+
 
 /*** Instantiate Mongo Server */
 mongoInstantiate();
