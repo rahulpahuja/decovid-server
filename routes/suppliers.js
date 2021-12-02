@@ -1,11 +1,9 @@
 const express = require("express");
-
 const supplierRouter = express.Router({ mergeParams: true });
-
 const Supplier = require("../model/Supplier");
 const SupplierAgreement = require("../model/SupplierAgreement");
 
-
+//GET: Fetches all supplier
 /** DUMMY GET ALL Suppliers **/
 supplierRouter.get("/", async (req, res) => {
   var object = {
@@ -65,7 +63,7 @@ supplierRouter.get("/", async (req, res) => {
   res.send(myList);
 });
 
-/** Get all Suppliers */
+//GET: Fetches all Supplier
 supplierRouter.get("/getAllSuppliers", async (req, res) => {
   try{
     let suppliers = await Supplier.find().exec();
@@ -82,9 +80,8 @@ supplierRouter.get("/getAllSuppliers", async (req, res) => {
     .status(400)
     .json({ status: "error", title: "GetSupplierFailed", msg: error });
   }
-
 });
-
+//GET: Gets agreement
 supplierRouter.get("/agreement",async(req,res)=>{
   console.log(req.body);
   try{
@@ -96,7 +93,6 @@ supplierRouter.get("/agreement",async(req,res)=>{
       data: { supplierAgreement: supplierAgreement1 },
     }
     return res.status(200).json(responseObject);
-
   }catch(error){
     return res.status(400).json({
       status: "error",
@@ -105,8 +101,7 @@ supplierRouter.get("/agreement",async(req,res)=>{
     });
   };
 });
-
-/** Add a Supplier*/
+//POST:Creates a Supplier
 supplierRouter.post("/addSupplier", async (req, res) => {
   console.log(req.body);
   const { email, password } = req.body;
@@ -137,18 +132,14 @@ supplierRouter.post("/addSupplier", async (req, res) => {
       .json({ status: "error", title: "CreateSuplierFailed", msg: error });
   }
 });
-
+//DELETE: Deletes a supplier 
 supplierRouter.delete("/:email",async(req,res)=>{
   const { email } = req.params;
   await Supplier.delete({email})
 });
-
-
-
-/** Get a supplier. */
+//GET: Gets a Supplier by Email
 supplierRouter.get("/:email", async (req, res) => {
   const { email } = req.params;
-
   let existingSupplier = await Supplier.findOne({ email }).exec();
   if (existingSupplier) {
     res.status(200).json({
@@ -166,5 +157,4 @@ supplierRouter.get("/:email", async (req, res) => {
     });
   }
 });
-
 module.exports = supplierRouter;
