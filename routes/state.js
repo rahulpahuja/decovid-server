@@ -1,20 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const States = require('../model/State');
-//const supplierRouter = express.Router({ mergeParams: true });
-
 const GET_ALL_States='Get all States Called';
-
 const DELETE_REQUESTER_BY_ID='Delete Requester by Id Called';
-
 const CREATE_REQUESTER='Create Requester Called';
-
 const UPDATE_REQUESTER='Update Requester Called';
-
+//PRINTER Function to print Data
 function print(data){
     console.log(data);
 }
-
+//GET: Fetches all the states
 router.get('/',async(req,res)=>{
     print(GET_ALL_States);
     try{
@@ -25,9 +20,7 @@ router.get('/',async(req,res)=>{
         res.send("Error: "+err);
     }
 });
-
-
-//Find by Id
+//GET:Fetches a State by Id
 router.get('/:state_id',async(req,res)=>{
     console.log('from States');
     try{
@@ -36,13 +29,11 @@ router.get('/:state_id',async(req,res)=>{
                 res.json("Requester Does not Exist")
             }
             res.json(requester);
-            
     }catch(err){
         res.send("Error: "+err);
     }
 });
-
-
+//POST: Creates a State
 router.post("/",async(req,res)=>{
     print(CREATE_REQUESTER);
     try{
@@ -52,16 +43,13 @@ router.post("/",async(req,res)=>{
                 country:req.body.country,
             });
             const a1 = await requester.save();
-            res.json(a1);
-            
+            res.json(a1);  
     }catch(err){
         res.status(404);
         res.send("Error: "+err);
     }
 });
-
-
-//Patch Request
+//PATCH:Updates a State by Id
 router.patch('/:id',async(req,res)=>{
     print(UPDATE_REQUESTER);
     try{
@@ -74,8 +62,7 @@ router.patch('/:id',async(req,res)=>{
         res.send("Error:"+err);
     }
 });
-
-//Delete States by id
+//DELETE:Deletes a State by id
 router.delete('/:state_id',async(req,res)=>{
     print(DELETE_REQUESTER_BY_ID);
     try{
@@ -87,7 +74,4 @@ router.delete('/:state_id',async(req,res)=>{
         res.send("Error:"+error);
     }
 });
-
-
-
 module.exports = router;
