@@ -1,20 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Requesters = require('../model/Requester');
-//const supplierRouter = express.Router({ mergeParams: true });
-
 const GET_ALL_REQUESTERS='Get all Requesters Called';
-
 const DELETE_REQUESTER_BY_ID='Delete Requester by Id Called';
-
 const CREATE_REQUESTER='Create Requester Called';
-
 const UPDATE_REQUESTER='Update Requester Called';
-
+//PRINTER Function to Print Data
 function print(data){
     console.log(data);
 }
 
+//GET: Fetches all Requesters
 router.get('/',async(req,res)=>{
     print(GET_ALL_REQUESTERS);
     try{
@@ -25,9 +21,7 @@ router.get('/',async(req,res)=>{
         res.send("Error: "+err);
     }
 });
-
-
-//Find by Id
+//GET:Fetches a Requester by Id
 router.get('/:id',async(req,res)=>{
     console.log('from requesters');
     try{
@@ -42,7 +36,7 @@ router.get('/:id',async(req,res)=>{
     }
 });
 
-
+//POST: Create a new Requester
 router.post("/",async(req,res)=>{
     print(CREATE_REQUESTER);
     try{
@@ -64,7 +58,7 @@ router.post("/",async(req,res)=>{
 });
 
 
-//Patch Request
+//PATCH:Update Requester by Id
 router.patch('/:id',async(req,res)=>{
     print(UPDATE_REQUESTER);
     try{
@@ -78,7 +72,7 @@ router.patch('/:id',async(req,res)=>{
     }
 });
 
-//Delete Requesters by id
+//DELETE:Delete Requester by id
 router.delete('/:id',async(req,res)=>{
     print(DELETE_REQUESTER_BY_ID);
     try{
@@ -90,7 +84,4 @@ router.delete('/:id',async(req,res)=>{
         res.send("Error:"+error);
     }
 });
-
-
-
 module.exports = router;
