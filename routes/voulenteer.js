@@ -1,13 +1,8 @@
 const express = require("express");
-
 const voulenteerRouter = express.Router({ mergeParams: true });
-
 const Voulenteer = require("../model/Voulenteer");
-
+//GET: Fetches all voulenteers
 voulenteerRouter.get("/",async(req,res)=>{
- 
-
-
   try {
     let v = await Voulenteer.findAll().exec();
     res.status(200).json({
@@ -22,6 +17,7 @@ voulenteerRouter.get("/",async(req,res)=>{
     .json({ status: "error", title: "Create Voulenteer Failed, Try Again", msg: "Error" });
 }
 });
+//POST:Add Voulenteer
 voulenteerRouter.post("/addV", async (req, res) => {
     console.log(req.body);
     const { email, password } = req.body;
@@ -39,7 +35,6 @@ voulenteerRouter.post("/addV", async (req, res) => {
       //create new Supplier
       let vr = new Voulenteer(req.body);
       await vr.save();
-
       let cv = await Voulenteer.findOne({ email }).exec();
       res.status(200).json({
         status: "success",
@@ -53,6 +48,4 @@ voulenteerRouter.post("/addV", async (req, res) => {
         .json({ status: "error", title: "Create Voulenteer Failed, Try Again", msg: error });
     }
   });
-
-
 module.exports = voulenteerRouter;
